@@ -1,0 +1,5 @@
+.venv/
+data/reliefweb_data/
+data/pdf_reports
+.env
+test.ipynb
