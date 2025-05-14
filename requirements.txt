@@ -4,5 +4,6 @@ beautifulsoup4~=4.12.3
 lxml~=5.2.1
 langgraph~=0.2.76
 langchain-together~=0.3.0
-
-
+newspaper3k~=0.2.8
+lxml-html-clean~=0.4.2
+streamlit
