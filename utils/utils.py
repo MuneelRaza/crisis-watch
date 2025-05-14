@@ -78,3 +78,23 @@ def download_url(pdf_url, save_path):
     except Exception as e:
         print(f"Failed to download PDF: {e}")
         return False
+    
+
+
+def get_report_details(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    content_div = soup.find('div', class_='rw-article__content')
+
+    if content_div:
+        return content_div.get_text(strip=True)
+    else:
+        return None
+    
+
+def parse_bullet_points(text):
+    lines = text.strip().split('\n')
+    bullets = [line.lstrip('- ').strip() for line in lines if line.strip().startswith('-')]
+    return bullets
+

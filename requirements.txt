@@ -1,4 +1,8 @@
-requests
-python-dotenv
-beautifulsoup4
-lxml
+requests~=2.32.3
+python-dotenv~=1.0.1
+beautifulsoup4~=4.12.3
+lxml~=5.2.1
+langgraph~=0.2.76
+langchain-together~=0.3.0
+
+

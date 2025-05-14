@@ -76,23 +76,4 @@ updated_filename = 'updated_reliefweb_reports_results.json'
 # save_data_to_json(updated_reports_results, updated_filename)
 
 
-
-reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
-full_path = '../' + reliefweb_data_path + '/' + updated_filename
-
-with open(full_path, "r") as f:
-    resolved_url_articles = json.load(f)
-
-
-# pdf saving path
-reports_dir_path = os.getenv('RELIEFWEB_PDF_REPORTS_DIR_PATH')
-full_path = '../' + reports_dir_path + '/'
-
-
-for article in resolved_url_articles:
-    pdf_url = get_pdf_url(article['resolved_url'])
-    print(pdf_url)
-    if pdf_url:
-        filename = os.path.basename(pdf_url.split("?")[0])  # remove query params from filename
-        download_url(pdf_url, save_path=filename)
         
