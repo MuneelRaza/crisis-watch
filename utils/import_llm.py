@@ -1,12 +1,12 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-import time
-from langchain_together import ChatTogether
 
 
+## Core LC Chat Interface
+from langchain_nvidia_ai_endpoints import ChatNVIDIA
 
-llm = ChatTogether(
-    model="meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
-)
+llm = ChatNVIDIA(model="mistralai/mixtral-8x7b-instruct-v0.1")
 
+# result = llm.invoke("Write a ballad about LangChain.")
+# print(result.content)
