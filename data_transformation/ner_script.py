@@ -73,11 +73,12 @@ def run_ner_on_texts():
     updated_reliefweb_reports_results = list(map(add_summary, reliefweb_reports_results))
 
     reliefweb_updated_filename = 'updated_reliefweb_reports_results.json'
+    print(updated_reliefweb_reports_results[0])
     save_data_to_json(updated_reliefweb_reports_results, reliefweb_updated_filename)
 
     print("Reliefwebdata summarized.")
     time.sleep(5)
-    
+
     gnews_filename = 'gnews_api_results.json'
     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
     full_path = reliefweb_data_path + '/' + gnews_filename
@@ -90,7 +91,7 @@ def run_ner_on_texts():
 
     updated_filename = 'gnews_api_results.json'
     save_data_to_json(updated_reports_results, updated_filename)
-
+    print(updated_reports_results[0])
     print("Gnews data summarized.")
 
 
