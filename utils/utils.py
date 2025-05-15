@@ -136,7 +136,7 @@ def get_title_text(url):
 
 
 def get_gnews_articles():
-    filename = 'gnews_api_results.json'
+    filename = 'gnews_data.json'
 
     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
     full_path = reliefweb_data_path + '/' + filename
