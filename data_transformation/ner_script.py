@@ -76,7 +76,8 @@ def run_ner_on_texts():
     save_data_to_json(updated_reliefweb_reports_results, reliefweb_updated_filename)
 
     print("Reliefwebdata summarized.")
-
+    time.sleep(5)
+    
     gnews_filename = 'gnews_api_results.json'
     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
     full_path = reliefweb_data_path + '/' + gnews_filename
