@@ -21,6 +21,7 @@ from prompts import summarization_prompt
 
 
 def add_summary(report_dict):
+    time.sleep(3)
     detail_url = report_dict['resolved_url']
     report_result = get_report_details(detail_url)
 
@@ -39,6 +40,7 @@ def add_summary(report_dict):
 
 
 def add_summary_to_gnews(news_dict):
+    time.sleep(3)
     detail_url = news_dict['url']
     print(detail_url)
     print(" ")
