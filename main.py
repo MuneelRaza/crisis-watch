@@ -18,9 +18,9 @@ def fetch_gnews():
     return get_gnews_data()
 
 @task
-def apply_ner(articles):
+def apply_ner():
     print("Applying NER on articles...")
-    return run_ner_on_texts(articles)
+    return run_ner_on_texts()
 
 
 @flow(name="CrisisWatch Pipeline")

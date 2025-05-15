@@ -60,21 +60,21 @@ def add_summary_to_gnews(news_dict):
 
 
 def run_ner_on_texts():
-    # reliefweb_filename = 'updated_reliefweb_reports_results.json'
+    reliefweb_filename = 'updated_reliefweb_reports_results.json'
 
-    # reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
-    # full_path = reliefweb_data_path + '/' + reliefweb_filename
+    reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
+    full_path = reliefweb_data_path + '/' + reliefweb_filename
 
-    # with open(full_path, "r") as f:
-    #     reliefweb_reports_results = json.load(f)
+    with open(full_path, "r") as f:
+        reliefweb_reports_results = json.load(f)
 
-    # updated_reliefweb_reports_results = list(map(add_summary, reliefweb_reports_results))
+    updated_reliefweb_reports_results = list(map(add_summary, reliefweb_reports_results))
 
-    # reliefweb_updated_filename = 'updated_reliefweb_reports_results.json'
-    # save_data_to_json(updated_reliefweb_reports_results, reliefweb_updated_filename)
+    reliefweb_updated_filename = 'updated_reliefweb_reports_results.json'
+    save_data_to_json(updated_reliefweb_reports_results, reliefweb_updated_filename)
 
-    # print("Reliefwebdata summarized.")
-    # print(time.sleep())
+    print("Reliefwebdata summarized.")
+    print(time.sleep())
 
     gnews_filename = 'gnews_api_results.json'
     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
