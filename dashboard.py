@@ -2,8 +2,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import streamlit as st
-import json
-import os
 
 from utils.utils import get_gnews_articles
 
@@ -28,7 +26,7 @@ for idx, article in enumerate(articles):
         # Show image if available
         with col1:
             if article.get("image"):
-                st.image(article["image"], use_column_width=True)
+                st.image(article["image"])
 
         # Show text content
         with col2:

@@ -26,15 +26,17 @@ def fetch_gnews_news(category):
     with urllib.request.urlopen(url) as response:
         data = json.loads(response.read().decode("utf-8"))
         articles = data["articles"]
+        print(articles)
+        print(" ")
 
     return articles
 
 
+def get_gnews_data():
+    gnews_results = fetch_gnews_news("crisis")
 
-gnews_results = fetch_gnews_news("crisis")
-print(type(gnews_results))
+    filename = 'gnews_api_results.json'
+    save_data_to_json(gnews_results, filename)
 
-filename = 'gnews_api_results.json'
-save_data_to_json(gnews_results, filename)
-
+    print("Gnews data fetched.")
 

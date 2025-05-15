@@ -6,4 +6,6 @@ langgraph~=0.2.76
 langchain-together~=0.3.0
 newspaper3k~=0.2.8
 lxml-html-clean~=0.4.2
-streamlit
+streamlit~=1.45.1
+prefect~=3.4.1
+

@@ -21,9 +21,7 @@ from newspaper import Article
 def save_data_to_json(data: list, filename: str):
     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
 
-    full_path = '../' + reliefweb_data_path + '/' + filename
-
-    print(full_path)
+    full_path = reliefweb_data_path + '/' + filename
 
     with open(full_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
@@ -35,6 +33,8 @@ def resolve_url(raw_url_article):
         response = requests.get(raw_url_article['url'], allow_redirects=True)
 
         if response.status_code == 200:
+            print("Actual URL: ", raw_url_article['url'])
+            print("Resolved URL: ", response.url)
             raw_url_article['resolved_url'] = response.url
 
         else:
@@ -139,7 +139,7 @@ def get_gnews_articles():
     filename = 'gnews_api_results.json'
 
     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
-    full_path = '../' + reliefweb_data_path + '/' + filename
+    full_path = reliefweb_data_path + '/' + filename
 
 
     with open(full_path, "r") as f:

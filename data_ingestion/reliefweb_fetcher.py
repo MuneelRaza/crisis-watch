@@ -14,6 +14,7 @@ if project_root not in sys.path:
 import requests
 import json
 from datetime import datetime, timedelta
+import time
 
 from utils.utils import save_data_to_json, resolve_url, get_pdf_url, download_url
 
@@ -55,25 +56,27 @@ def fetch_reliefweb_articles(query="conflict", limit=10):
 
 
 
-# reliefweb_results = fetch_reliefweb_articles()
-# print(type(reliefweb_results))
-
-filename = 'reliefweb_reports_results.json'
-# save_data_to_json(reliefweb_results, filename)
-
-
-# reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
-# full_path = '../' + reliefweb_data_path + '/' + filename
-
-# with open(full_path, "r") as f:
-#     reports_results = json.load(f)
-
-# print(type(reports_results))
-
-# updated_reports_results = list(map(resolve_url, reports_results))
-
-updated_filename = 'updated_reliefweb_reports_results.json'
-# save_data_to_json(updated_reports_results, updated_filename)
-
-
         
+def get_relief_web_data():
+    reliefweb_results = fetch_reliefweb_articles()
+    print(type(reliefweb_results))
+
+    filename = 'reliefweb_reports_results.json'
+    save_data_to_json(reliefweb_results, filename)
+
+    print("Initial data fetched and saved for Reliefweb.")
+    time.sleep(5)
+
+    reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
+    full_path = reliefweb_data_path + '/' + filename
+
+    with open(full_path, "r") as f:
+        reports_results = json.load(f)
+
+    updated_reports_results = list(map(resolve_url, reports_results))
+
+    updated_filename = 'updated_reliefweb_reports_results.json'
+    save_data_to_json(updated_reports_results, updated_filename)
+
+    print("URL Resolved and file updated.")
+

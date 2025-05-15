@@ -12,23 +12,12 @@ if project_root not in sys.path:
 
 
 import json
+import time
 
 from utils.utils import save_data_to_json, get_report_details, parse_bullet_points, remove_asterisks, get_title_text
 from utils.import_llm import llm
 from prompts import summarization_prompt
 
-
-
-# filename = 'updated_reliefweb_reports_results.json'
-
-# reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
-# full_path = '../' + reliefweb_data_path + '/' + filename
-
-# with open(full_path, "r") as f:
-#     reports_results = json.load(f)
-
-# print(type(reports_results))
-# print(reports_results[5])
 
 
 def add_summary(report_dict):
@@ -40,6 +29,8 @@ def add_summary(report_dict):
         summary = llm.invoke([formatted_prompt])
         cleaned_summary = remove_asterisks(summary.content)
         report_dict['summary'] = cleaned_summary
+        print(cleaned_summary)
+        print(" ")
         return report_dict
     else:
         print("Content not found.")
@@ -58,6 +49,8 @@ def add_summary_to_gnews(news_dict):
         summary = llm.invoke([formatted_prompt])
         cleaned_summary = remove_asterisks(summary.content)
         news_dict['summary'] = cleaned_summary
+        print(cleaned_summary)
+        print(" ")
         return news_dict
     else:
         print("Content not found.")
@@ -65,28 +58,37 @@ def add_summary_to_gnews(news_dict):
         return news_dict
 
 
-# updated_reports_results = list(map(add_summary, reports_results))
 
-# updated_filename = 'updated_reliefweb_reports_results.json'
-# save_data_to_json(updated_reports_results, updated_filename)
+def run_ner_on_texts():
+    # reliefweb_filename = 'updated_reliefweb_reports_results.json'
+
+    # reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
+    # full_path = reliefweb_data_path + '/' + reliefweb_filename
+
+    # with open(full_path, "r") as f:
+    #     reliefweb_reports_results = json.load(f)
+
+    # updated_reliefweb_reports_results = list(map(add_summary, reliefweb_reports_results))
+
+    # reliefweb_updated_filename = 'updated_reliefweb_reports_results.json'
+    # save_data_to_json(updated_reliefweb_reports_results, reliefweb_updated_filename)
+
+    # print("Reliefwebdata summarized.")
+    # print(time.sleep())
+
+    gnews_filename = 'gnews_api_results.json'
+    reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
+    full_path = reliefweb_data_path + '/' + gnews_filename
 
 
+    with open(full_path, "r") as f:
+        reports_results = json.load(f)
+        
+    updated_reports_results = list(map(add_summary_to_gnews, reports_results))
 
-# filename = 'gnews_api_results.json'
-# reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
-# full_path = '../' + reliefweb_data_path + '/' + filename
+    updated_filename = 'gnews_api_results.json'
+    save_data_to_json(updated_reports_results, updated_filename)
 
-
-# with open(full_path, "r") as f:
-#     reports_results = json.load(f)
-    
-
-
-# updated_reports_results = list(map(add_summary_to_gnews, reports_results))
-
-# updated_filename = 'gnews_api_results.json'
-# save_data_to_json(updated_reports_results, updated_filename)
-
-
+    print("Gnews data summarized.")
 
 
