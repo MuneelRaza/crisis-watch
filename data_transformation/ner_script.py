@@ -32,11 +32,10 @@ def add_summary(report_dict):
         report_dict['summary'] = cleaned_summary
         print(cleaned_summary)
         print(" ")
-        return report_dict
     else:
         print("Content not found.")
         report_dict['summary'] = ""
-        return report_dict
+    return report_dict
 
 
 def add_summary_to_gnews(news_dict):
@@ -53,11 +52,10 @@ def add_summary_to_gnews(news_dict):
         news_dict['summary'] = cleaned_summary
         print(cleaned_summary)
         print(" ")
-        return news_dict
     else:
         print("Content not found.")
         news_dict['summary'] = ""
-        return news_dict
+    return news_dict
 
 
 
@@ -71,15 +69,16 @@ def run_ner_on_texts():
         reliefweb_reports_results = json.load(f)
 
     updated_reliefweb_reports_results = list(map(add_summary, reliefweb_reports_results))
+    print(updated_reliefweb_reports_results[0])
 
     reliefweb_updated_filename = 'reliefweb_data.json'
-    print(updated_reliefweb_reports_results[0])
+    
     save_data_to_json(updated_reliefweb_reports_results, reliefweb_updated_filename)
 
     print("Reliefwebdata summarized.")
     time.sleep(5)
 
-    gnews_filename = 'gnews_data.json'
+    gnews_filename = 'gnews_api_results.json'
     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
     full_path = reliefweb_data_path + '/' + gnews_filename
 
@@ -89,7 +88,7 @@ def run_ner_on_texts():
         
     updated_reports_results = list(map(add_summary_to_gnews, reports_results))
 
-    updated_filename = 'gnews_api_results.json'
+    updated_filename = 'gnews_data.json'
     save_data_to_json(updated_reports_results, updated_filename)
     print(updated_reports_results[0])
     print("Gnews data summarized.")
