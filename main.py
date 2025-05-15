@@ -27,6 +27,7 @@ def apply_ner(articles):
 def crisiswatch_flow():
     fetch_reliefweb()
     fetch_gnews()
+    apply_ner()
     
 
 
