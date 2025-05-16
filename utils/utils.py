@@ -18,13 +18,26 @@ from newspaper import Article
 
 
 
+# def save_data_to_json(data: list, filename: str):
+#     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
+
+#     full_path = reliefweb_data_path + '/' + filename
+
+#     with open(full_path, "w", encoding="utf-8") as f:
+#         json.dump(data, f, ensure_ascii=False, indent=4)
+
 def save_data_to_json(data: list, filename: str):
     reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
 
-    full_path = reliefweb_data_path + '/' + filename
+    # Make path absolute relative to project root
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    full_path = os.path.join(project_root, reliefweb_data_path, filename)
+
+    os.makedirs(os.path.dirname(full_path), exist_ok=True)
 
     with open(full_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
+
 
 
 
@@ -146,3 +159,17 @@ def get_gnews_articles():
         reports_results = json.load(f)
 
     return reports_results
+
+
+def get_reliefweb_articles():
+    filename = 'reliefweb_data.json'
+
+    reliefweb_data_path = os.getenv('RELIEFWEB_DATA_FILE_PATH')
+    full_path = reliefweb_data_path + '/' + filename
+
+
+    with open(full_path, "r") as f:
+        reports_results = json.load(f)
+
+    return reports_results
+

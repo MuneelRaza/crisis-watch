@@ -1,6 +1,18 @@
 [
     {
         "source": "ReliefWeb",
+        "title": "Rapid response by UN peacekeepers saves lives in conflict-affected Maper",
+        "date": "2025-05-15T11:44:01+00:00",
+        "url": "https://reliefweb.int/node/4152957",
+        "body": "",
+        "countries": [
+            "South Sudan"
+        ],
+        "tags": [],
+        "resolved_url": "https://reliefweb.int/report/south-sudan/rapid-response-un-peacekeepers-saves-lives-conflict-affected-maper"
+    },
+    {
+        "source": "ReliefWeb",
         "title": "Deadly clan conflict in Jowhar forces mothers and children to flee to Mogadishu camps",
         "date": "2025-05-15T05:37:47+00:00",
         "url": "https://reliefweb.int/node/4152860",
@@ -115,17 +127,5 @@
         ],
         "tags": [],
         "resolved_url": "https://reliefweb.int/report/myanmar/myanmar-armed-conflict-dashboard-april-2025-enmy"
-    },
-    {
-        "source": "ReliefWeb",
-        "title": "Can Social Protection Programmes Promote Livelihoods and Climate Resilience in Conflict‑Affected Settings? Evidence from Ethiopia’s Productive Safety Net Programme",
-        "date": "2025-05-07T13:03:15+00:00",
-        "url": "https://reliefweb.int/node/4151123",
-        "body": "",
-        "countries": [
-            "Ethiopia"
-        ],
-        "tags": [],
-        "resolved_url": "https://reliefweb.int/report/ethiopia/can-social-protection-programmes-promote-livelihoods-and-climate-resilience-conflict-affected-settings-evidence-ethiopias-productive-safety-net-programme"
     }
 ]
